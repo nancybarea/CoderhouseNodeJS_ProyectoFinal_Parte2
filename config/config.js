@@ -1,9 +1,7 @@
 import dotenv from 'dotenv';
 import path from 'path';
 
-dotenv.config({
-  path: path.resolve(process.cwd()+'/config', process.env.NODE_ENV +'.env')
-});
+dotenv.config();
 
 
 export default {

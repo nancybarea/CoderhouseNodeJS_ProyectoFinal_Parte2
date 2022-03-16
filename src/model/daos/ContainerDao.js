@@ -11,7 +11,7 @@ await client.connect();
 export default class ContainerDao {
 
     constructor(collection) {
-        this.collectionName
+        this.collectionName = collection
         this.collection = client.db(base).collection(collection)
         logger.info(`Mongo Base:${base} collection: ${collection} instanciada`)
     }
