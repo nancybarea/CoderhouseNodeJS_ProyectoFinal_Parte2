@@ -1,3 +1,4 @@
+import logger from '../logger.js'
 
 export function failRoute(req, res) {
     const title = 'ROUTING ERROR';

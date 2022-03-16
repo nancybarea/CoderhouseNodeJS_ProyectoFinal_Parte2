@@ -6,7 +6,7 @@ log4js.configure({
   appenders: {
     consola: { type: 'console' },
     archivoErrores: { type: 'file', filename: 'error.log' },
-    archivoDebug: { type: 'file', filename: 'debug.log' },
+    loggerArchivoWarning: { type: 'file', filename: 'warning.log' },
     loggerConsola: {
       type: 'logLevelFilter',
       appender: 'consola',
