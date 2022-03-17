@@ -19,19 +19,15 @@ export default class UsersApi {
             else throw err
         }
     }
-    
-
 
     async get(email) {
         const data = await this.usersDao.getByEmail(email);
         return new UserDto(data);
     }
-    
 
     async login(email, password){
         try{
             const usuario = await this.get(email)
-
             if (!usuario.isValidPassword(password)) 
                 return false
             else
@@ -84,35 +80,6 @@ export default class UsersApi {
             throw (err);
         }
     }
-    
-
-    async AgregarRole(email, role)
-    {
-        try{
-            const dto = await this.usersDao.addRole(email, role)
-            return new UserDto(dto);
-        }
-        catch(err)
-        {
-            logger.error(`Error in Saving user: ${err}`);
-            throw (err);
-        }
-    }
-    
-    async EliminarRole(email, role)
-    {
-        try{
-            const dto = await this.usersDao.delRole(email, role)
-            return new UserDto(dto);
-        }
-        catch(err)
-        {
-            logger.error(`Error in Saving user: ${err}`);
-            throw (err);
-        }
-    }
-
-
 
 }
 
