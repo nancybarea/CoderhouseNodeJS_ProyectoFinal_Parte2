@@ -3,6 +3,7 @@ import cors from 'cors';
 import passport from './controller/PassportLocal.js'
 import DefaultRoutes from "./routes/default.js"
 import UsersRoutes from './routes/users.js'
+import SeriesRoutes from './routes/series.js'
 import MongoStore from 'connect-mongo'
 import config from '../config/config.js'
 import session from 'express-session';
@@ -42,6 +43,7 @@ app.use(passport.session());
 
 // rutas apiRestFull
 app.use('/', UsersRoutes)
+app.use('/', SeriesRoutes)
 
 //rutas no encontrada
 app.use('/*', DefaultRoutes)

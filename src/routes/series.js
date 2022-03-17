@@ -1,11 +1,11 @@
 import { Router } from 'express'
 
 import  * as seriesController from '../controller/SeriesController.js'
-import  * as userController from '../controller/UsersController.js'
+import {mwdIsAuth} from '../controller/UsersController.js'
 
 const SeriesRoutes = new Router();
 
-SeriesRoutes.get('/series', userController.mwdIsAuth, seriesController.getAll)
+SeriesRoutes.get('/series', mwdIsAuth, seriesController.getAll)
 
 
 export default SeriesRoutes 
