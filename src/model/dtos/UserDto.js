@@ -14,7 +14,6 @@ export default class UsuarioDto {
 
     constructor({ _id, email, password, firstname, lastname, avatar, live, movies, series, music }) {
 
-        console.log(movies)
         if (_id === undefined) {
             this._id = undefined;
             this.live = [];
@@ -37,7 +36,6 @@ export default class UsuarioDto {
         this.lastname = lastname;
         this.avatar = avatar;
 
-        console.log(this)
     }
 
     get() {
@@ -87,7 +85,7 @@ export default class UsuarioDto {
 
     setMusic(musics) {
         for (const music of musics) {
-            if (this.music.length < 4) {
+            if (this.music.length < 3) {
                 music.date = Date.now()
                 this.music.push(music)
             }

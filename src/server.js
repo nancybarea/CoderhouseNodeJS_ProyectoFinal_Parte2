@@ -31,11 +31,11 @@ app.use(session({
     }),
     /* ------------------------------------------------------------ */
 
-    secret: 'TecoHackathonEquipo9',
+    secret: config.SECRET,
     resave: true,
     saveUninitialized: false,
     cookie: {
-        maxAge: 600000
+        maxAge: config.SESSION_MAXAGE
     }
 }))
 

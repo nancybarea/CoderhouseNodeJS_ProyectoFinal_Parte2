@@ -30,8 +30,6 @@ export default class UsersApi {
 
     async get(email) {
         const data = await this.usersDao.getByEmail(email);
-
-        console.log(data)
         return new UserDto(data);
     }
 

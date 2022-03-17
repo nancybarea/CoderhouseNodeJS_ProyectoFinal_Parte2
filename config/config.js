@@ -10,5 +10,8 @@ export default {
   PORT: process.env.PORT || 8000,
   MONGO_URL: process.env.MONGO_URL||'noURL',
   MONGO_DB: process.env.MONGO_BASE||'hackaton',
-  MONGO_SESSION_URL: process.env.SESSION_URL||'noURL'
+  MONGO_SESSION_URL: process.env.SESSION_URL||'noURL',
+  SESSION_MAXAGE: process.env.SESSION_MAXAGE || 600000,
+  SECRET:process.env.SECRET || 'Thebestteam9',
+
 }
