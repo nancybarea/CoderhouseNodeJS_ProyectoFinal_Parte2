@@ -21,23 +21,5 @@ export default class UsersDao extends ContainerDao {
     return await super.getById({ email: user.email })
   }
 
-  async addRole(email, role) {
-
-    await this.collection.updateOne(
-      { email: email },
-      { '$push': { roles: role } })
-
-    return await super.getById({ email: email })
-  }
-
-  async delRole(email, role) {
-
-    await this.collection.updateOne(
-      { email: email },
-      { '$pull': { roles: { $eq: role } } })
-
-    return await super.getById({ email: email })
-
-  }
-
+  
 }

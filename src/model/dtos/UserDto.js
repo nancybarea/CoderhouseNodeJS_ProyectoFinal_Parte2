@@ -2,22 +2,22 @@ import bCrypt from 'bcrypt';
 
 export default class UsuarioDto {
 
-    roles;
-    password;
     email;
+    password;
     firstname;
     lastname;
     avatar;
+    preference;
 
-    constructor({ _id, email, password, firstname, lastname, avatar, roles }) {
+    constructor({ _id, email, password, firstname, lastname, avatar, preference }) {
         if (_id === undefined) {
             this._id = undefined;
-            this.roles = [];
+            this.preference = [];
             this.password = createHash(password)
         }
         else {
             this._id = _id;
-            this.roles = roles;
+            this.preference = preference;
             this.password = password;
         }
 
@@ -28,14 +28,13 @@ export default class UsuarioDto {
     }
 
     get() {
-       
         return {
             email:this.email,
             firstname:this.firstname,
             lastname:this.lastname,
-                avatar: this.avatar,
-            roles: this.roles
-        }
+            avatar: this.avatar,
+            preference: this.preference
+    }
     }
 
 
