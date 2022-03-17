@@ -1,5 +1,4 @@
 import SeriesDao from '../model/daos/SeriesDao.js';
-//import SeriesDto from '../model/dtos/SeriesDto.js';
 
 export default class SeriesApi {
 
