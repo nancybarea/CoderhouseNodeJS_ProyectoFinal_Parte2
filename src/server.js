@@ -7,6 +7,7 @@ import SeriesRoutes from './routes/series.js'
 import MongoStore from 'connect-mongo'
 import config from '../config/config.js'
 import session from 'express-session';
+import LivesRoutes from './routes/lives.js';
 
 const app = express()
 
@@ -44,6 +45,7 @@ app.use(passport.session());
 // rutas apiRestFull
 app.use('/', UsersRoutes)
 app.use('/', SeriesRoutes)
+app.use('/', LivesRoutes)
 
 //rutas no encontrada
 app.use('/*', DefaultRoutes)
