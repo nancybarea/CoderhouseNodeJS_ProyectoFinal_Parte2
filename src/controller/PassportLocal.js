@@ -1,16 +1,16 @@
 
 import passport from 'passport';
 import { Strategy as LocalStrategy } from 'passport-local';
-import { SignUpController, LoginController } from './UsersController.js'
+import { mdwSignUp, mdwLogin } from './UsersController.js'
 
 import UsersApi from '../api/UsersApi.js'
 const users = new UsersApi();
 
 
 
-passport.use('signup', new LocalStrategy({usernameField: 'email', passwordField: 'password', passReqToCallback: true }, SignUpController))
+passport.use('signup', new LocalStrategy({usernameField: 'email', passwordField: 'password', passReqToCallback: true }, mdwSignUp))
 
-passport.use('login', new LocalStrategy({ usernameField: 'email', passwordField: 'password'}, LoginController));
+passport.use('login', new LocalStrategy({ usernameField: 'email', passwordField: 'password'}, mdwLogin));
 
 passport.serializeUser(function (user, done) {
   done(null, user.email);

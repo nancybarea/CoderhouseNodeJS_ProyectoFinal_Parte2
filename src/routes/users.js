@@ -1,26 +1,25 @@
 import { Router } from 'express'
 import passport from '../controller/PassportLocal.js'
-import {mwdIsAuth, validaUser} from '../controller/UsersController.js'
 
-import { getfailloginController, getfailsignupController, getlogoutController, AgregarRole, EliminarRole, postLoginController, postSignupController, changePassword } from '../controller/UsersController.js'
+import  * as userController from '../controller/UsersController.js'
 
 const UsersRoutes = new Router();
 
-UsersRoutes.post('/login',  passport.authenticate('login', {failureRedirect: '/faillogin' }), postLoginController);
+UsersRoutes.post('/login',  passport.authenticate('login', {failureRedirect: '/faillogin' }), userController.postLogin);
 
-UsersRoutes.post('/signup', validaUser, passport.authenticate('signup', {failureRedirect: '/failsignup' }), postSignupController)
+UsersRoutes.post('/signup', userController.mdwValidaUser, passport.authenticate('signup', {failureRedirect: '/failsignup' }), userController.postSignup)
 
-UsersRoutes.put('/users/password', mwdIsAuth, changePassword)
+UsersRoutes.put('/users/password', userController.mwdIsAuth, userController.putPassword)
 
-UsersRoutes.get('/faillogin', getfailloginController)
+UsersRoutes.get('/faillogin', userController.getfaillogin)
 
-UsersRoutes.get('/failsignup', getfailsignupController)
+UsersRoutes.get('/failsignup', userController.getfailsignup)
 
-UsersRoutes.get('/logout', getlogoutController)
+UsersRoutes.get('/logout', userController.getlogout)
 
-// UsersRoutes.post('/usuarios/role', AgregarRole)
+// UsersRoutes.post('/usuarios/role', userController.postRole)
 
-// UsersRoutes.delete('/usuarios/role', EliminarRole)
+// UsersRoutes.delete('/usuarios/role', userController.deleleRole)
 
 export default UsersRoutes 
 

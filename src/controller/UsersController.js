@@ -4,7 +4,7 @@ import schema, {schPassword} from '../validations/users.js'
 
 const users = new UsersApi();
 
-export async function SignUpController(req, email, password, done) {
+export async function mdwSignUp(req, email, password, done) {
 
     try {
         const data = await schema.validateAsync(req.body)
@@ -19,7 +19,7 @@ export async function SignUpController(req, email, password, done) {
     }
 }
 
-export async function LoginController(email, password, done) {
+export async function mdwLogin(email, password, done) {
 
     logger.info(`usuarios controller login email: ${email} `)
 
@@ -34,24 +34,24 @@ export async function LoginController(email, password, done) {
 
 };
 
-export function postLoginController(req, res) {
+export function postLogin(req, res) {
     res.status(200).json(req.user)
 }
 
-export function postSignupController(req, res) {
+export function postSignup(req, res) {
     res.status(200).json(req.user)
 }
 
-export function getfailloginController(req, res) {
+export function getfaillogin(req, res) {
     res.status(401).json({ "descripcion": "email o contraseña incorrecta" })
 }
 
-export function getfailsignupController(req, res) {
+export function getfailsignup(req, res) {
 
     res.status(400).json({ descripcion: req.error })
 }
 
-export function getlogoutController(req, res) {
+export function getlogout(req, res) {
     req.session.destroy(err => {
         if (!err) res.status(200).json({ 'status': 'ok' })
         else res.status(500).send({ status: 'Logout ERROR', body: err })
@@ -59,7 +59,7 @@ export function getlogoutController(req, res) {
 }
 
 
-export async function changePassword(req, res) {
+export async function putPassword(req, res) {
     const user = req.user 
     let passwordCurrent
     let passwordNew
@@ -83,18 +83,18 @@ export async function changePassword(req, res) {
 }
 
 
-export async function AgregarRole(req, res) {
+export async function postRole(req, res) {
     const user = await users.AgregarRole(req.body.email, req.body.role);
     res.status(201).json(user.get())
 }
 
-export async function EliminarRole(req, res) {
+export async function deleteRole(req, res) {
     const user = await users.EliminarRole(req.body.email, req.body.role);
     res.status(204).json(user.get())
 }
 
 
-export async function validaUser(req, res, next) {
+export async function mdwValidaUser(req, res, next) {
     let data
     try {
         data = await schema.validateAsync(req.body)
