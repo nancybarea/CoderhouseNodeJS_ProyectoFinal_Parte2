@@ -5,7 +5,7 @@ import {mwdIsAuth} from '../controller/UsersController.js'
 
 const SeriesRoutes = new Router();
 
-SeriesRoutes.get('/series', mwdIsAuth, seriesController.getAll)
+SeriesRoutes.get('/', mwdIsAuth, seriesController.getAll)
 
 
 export default SeriesRoutes 

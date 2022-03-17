@@ -9,6 +9,7 @@ import MongoStore from 'connect-mongo'
 import config from '../config/config.js'
 import session from 'express-session';
 import LivesRoutes from './routes/lives.js';
+import MoviesRoutes from './routes/movies.js';
 
 const app = express()
 
@@ -48,6 +49,7 @@ app.use('/', UsersRoutes)
 app.use('/', SeriesRoutes)
 app.use('/', MusicRoutes)
 app.use('/', LivesRoutes)
+app.use('/', MoviesRoutes)
 
 //rutas no encontrada
 app.use('/*', DefaultRoutes)
