@@ -5,7 +5,7 @@ import {mwdIsAuth} from '../controller/UsersController.js'
 
 const MusicRoutes = new Router();
 
-MusicRoutes.get('/music', mwdIsAuth, musicController.getAll)
+MusicRoutes.get('/', mwdIsAuth, musicController.getAll)
 
 
 export default MusicRoutes 

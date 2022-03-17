@@ -46,8 +46,8 @@ app.use(passport.session());
 
 // rutas apiRestFull
 app.use('/', UsersRoutes)
-app.use('/', SeriesRoutes)
-app.use('/', MusicRoutes)
+app.use('/series', SeriesRoutes)
+app.use('/music', MusicRoutes)
 app.use('/', LivesRoutes)
 app.use('/', MoviesRoutes)
 
