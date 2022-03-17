@@ -1,4 +1,4 @@
-import { MongoClient } from 'mongodb';
+import { MongoClient, ObjectId } from 'mongodb';
 import logger from '../../logger.js'
 import CustomError from '../../errores/CustomError.js'
 
@@ -31,6 +31,23 @@ export default class ContainerDao {
         let wanted
         try {
             wanted = await this.collection.findOne(query);
+        }
+        catch (err) {
+            logger.error(err)
+            throw new CustomError(500, `error al obtener un Documento por codigo en la coleccion ${this.collectionName}`, err)
+        }
+
+        if (!wanted) {
+            throw new CustomError(404, `Documento no encontrado con ese ${JSON.stringify(query)}`)
+        }
+        return wanted
+    }
+
+    async getByObjectId(_id) {
+        let obj = {_id:ObjectId(_id)}
+        let wanted
+        try {
+            wanted = await this.collection.findOne(obj);
         }
         catch (err) {
             logger.error(err)

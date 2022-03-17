@@ -13,5 +13,18 @@ export async function getAll(req, res) {
     }
 }
 
+export async function getById(req, res) {
+    
+    let id = (req.params)
+    
+    try{
+        const encontrado = await lives.getByObjectId(id)
+        res.status(200).json(encontrado)
+    }
+    catch (err){
+        res.status(err.estado).json(err)
+    }
+}
+
 
 
