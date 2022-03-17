@@ -1,6 +1,6 @@
 import UsersApi from '../api/UsersApi.js'
 import logger from '../logger.js'
-import schema from '../validations/users.js'
+import schema, {schPassword} from '../validations/users.js'
 
 const users = new UsersApi();
 
@@ -57,6 +57,31 @@ export function getlogoutController(req, res) {
         else res.status(500).send({ status: 'Logout ERROR', body: err })
     })
 }
+
+
+export async function changePassword(req, res) {
+    const user = req.user 
+    let passwordCurrent
+    let passwordNew
+
+    try{
+        const data = await schPassword.validateAsync(req.body)
+        passwordCurrent = data.passwordCurrent
+        passwordNew = data.passwordNew
+    }
+    catch(err){
+        res.status(400).json(err)
+    }
+
+    try{
+        const userObj= await users.changePassword(user, passwordCurrent, passwordNew);
+        res.status(201).json(userObj.get()) 
+    }
+    catch(err){
+        res.status(err.estado).json(err)
+    }
+}
+
 
 export async function AgregarRole(req, res) {
     const user = await users.AgregarRole(req.body.email, req.body.role);

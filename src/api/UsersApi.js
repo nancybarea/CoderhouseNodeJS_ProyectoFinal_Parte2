@@ -59,6 +59,33 @@ export default class UsersApi {
         }
     }
 
+    //modify the password
+    async changePassword(user, passwordCurrent, passwordNew){
+        try {
+            //create user object with date of datebase
+            const userBD = await this.usersDao.getByEmail(user.email);
+            const userObj = new UserDto(userBD);
+
+            //validate email and password
+            if (userObj.isValidPassword(passwordCurrent)) {
+                //If you validate OK, modify password 
+                userObj.setNewPassword(passwordNew)
+                //save to database
+                const userNewBD = await this.usersDao.update(userObj)     
+                const userNewObj = new UserDto(userNewBD);
+                return userNewObj;
+            }else{
+                logger.error(`Error validation email and password`);
+                throw new CustomError(400, `Error validation email and password`)
+            }            
+        }
+        catch (err) {
+            logger.error(`Error in Saving user: ${err}`);
+            throw (err);
+        }
+    }
+    
+
     async AgregarRole(email, role)
     {
         try{

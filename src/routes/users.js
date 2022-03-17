@@ -1,14 +1,16 @@
 import { Router } from 'express'
 import passport from '../controller/PassportLocal.js'
-import {validaUser} from '../controller/UsersController.js'
+import {mwdIsAuth, validaUser} from '../controller/UsersController.js'
 
-import { getfailloginController, getfailsignupController, getlogoutController, AgregarRole, EliminarRole, postLoginController, postSignupController } from '../controller/UsersController.js'
+import { getfailloginController, getfailsignupController, getlogoutController, AgregarRole, EliminarRole, postLoginController, postSignupController, changePassword } from '../controller/UsersController.js'
 
 const UsersRoutes = new Router();
 
 UsersRoutes.post('/login',  passport.authenticate('login', {failureRedirect: '/faillogin' }), postLoginController);
 
 UsersRoutes.post('/signup', validaUser, passport.authenticate('signup', {failureRedirect: '/failsignup' }), postSignupController)
+
+UsersRoutes.put('/users/password', mwdIsAuth, changePassword)
 
 UsersRoutes.get('/faillogin', getfailloginController)
 
