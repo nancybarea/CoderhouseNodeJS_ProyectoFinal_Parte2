@@ -23,7 +23,7 @@ export async function mdwSignUp(req, email, password, done) {
 
 export async function mdwLogin(email, password, done) {
 
-    logger.info(`usuarios controller login email: ${email} `)
+    logger.info(`users controller login email: ${email} `)
 
     try {
         const user = await users.login(email, password)
@@ -46,7 +46,7 @@ export async function postLogin(req, res) {
 export async function mdwValidateToken(token, cb) {
 
     if (token.exp < Math.floor(Date.now() / 1000)) {
-        logger.warn('token caducado')
+        logger.warn('token timed out')
         return cb(null, false)
     }
     else {
@@ -62,7 +62,7 @@ export function postSignup(req, res) {
 }
 
 export function getfaillogin(req, res) {
-    res.status(401).json({ "descripcion": "email o contraseña incorrecta" })
+    res.status(401).json({ "descripcion": "email o password incorrect" })
 }
 
 export function getfailsignup(req, res) {
@@ -119,18 +119,18 @@ export async function mdwValidaUser(req, res, next) {
 
     }
     catch (err) {
-        logger.warn(`Error al validaciones esquema de usuarios`)
+        logger.warn(`Error validating user schema`)
         return res.status(400).json({ descripcion: err.details })
     }
 
     try {
 
         if (await users.emailExists(data.email)) {
-            return res.status(400).json({ descripcion: 'El email ya esta registrado' })
+            return res.status(400).json({ descripcion: 'Email is already registered' })
         }
     }
     catch (err) {
-        logger.error(`Error al ejecutar validaciones de usuarios ${err}`)
+        logger.error(`Error running user validations ${err}`)
         return res.status(500).json({ descripcion: err })
     }
 
@@ -142,7 +142,7 @@ export function mwdIsAuth(req, res, next) {
     if (req.isAuthenticated()) {
         next()
     } else {
-        res.status(401).json({ error: 'Acceso no autorizado' })
+        res.status(401).json({ error: 'Unauthorized access' })
     }
 }
 

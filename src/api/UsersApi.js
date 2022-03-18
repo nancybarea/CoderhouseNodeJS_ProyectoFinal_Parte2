@@ -52,7 +52,7 @@ export default class UsersApi {
             }
         }
         catch (err) {
-            logger.error(`fallo el login de mail error:${err}`)
+            logger.error(`Failed mail login error:${err}`)
         }
 
     }
@@ -85,7 +85,7 @@ export default class UsersApi {
             const usuario = new UserDto(data)
             usuario._id = await this.usersDao.add(usuario)
 
-            logger.info(`Registro Ok `);
+            logger.info(`Record Ok `);
 
             await this.completePreference(usuario);
             return usuario.get();
@@ -113,7 +113,7 @@ export default class UsersApi {
                 await this.completePreference(userNewObj);
                 return userNewObj;
             } else {
-                logger.error(`Error validation email and password`);
+                logger.error(`Error validating email and password`);
                 throw new CustomError(400, `Error validation email and password`)
             }
         }
