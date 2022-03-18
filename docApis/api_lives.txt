@@ -1,0 +1,44 @@
+GET http://localhost:8080/lives
+
+(agregar el token)
+
+response
+
+[
+    {
+        "_id": "62334b63ca8cfa1d3e0644ee",
+        "url": "https://www.youtube.com/watch?v=wHn1_QVoXGM",
+        "name": "TN",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/4/4f/TN_todo_noticias_logo.svg"
+    },
+    {
+        "_id": "62334c38008a654991ad5aff",
+        "url": "https://www.youtube.com/watch?v=InSydaLSSlw",
+        "name": "Cronica",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Cr%C3%B3nica_TV_logotipo_%282016%29.png/200px-Cr%C3%B3nica_TV_logotipo_%282016%29.png"
+    },
+    {
+        "_id": "62334c8a008a654991ad5b00",
+        "url": "https://www.youtube.com/watch?v=7_oQ0OJ2F0M",
+        "name": "TV Pública",
+        "thumbnail": "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg/200px-TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg.png"
+    },
+    {
+        "_id": "62334d85008a654991ad5b01",
+        "url": "https://www.youtube.com/watch?v=Z5C7TcuHRN4",
+        "name": "TELEFE",
+        "thumbnail": "https://i.ytimg.com/vi/Z5C7TcuHRN4/hqdefault.jpg?sqp=-oaymwEcCOADEI4CSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA8szxQjLzUd6GgRS8_95pkkxo8Ag"
+    },
+    {
+        "_id": "62334d88008a654991ad5b02",
+        "url": "https://www.youtube.com/watch?v=GZEwdVV5DTY",
+        "name": "La Nacion +",
+        "thumbnail": "https://i.ytimg.com/vi/GZEwdVV5DTY/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLCblRh6nDP68A-CZkEXOJdXGnL5DQ"
+    },
+    {
+        "_id": "6233bed4eb32eb1b9a0feb6b",
+        "url": "https://i.ytimg.com/vi/8MrC0LPmOfc/hq720.jpg?sqp=-oaymwEcCOgCEMoBSFXyq4qpAw4IARUAAIhCGAFwAcABBg==&rs=AOn4CLA-9jd-7kkBtvOHJjw1xtBE_7W2mg",
+        "name": "C5N",
+        "thumbnail": "https://www.youtube.com/watch?v=8MrC0LPmOfc"
+    }
+]
