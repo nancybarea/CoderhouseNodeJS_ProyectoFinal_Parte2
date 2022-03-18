@@ -1,6 +1,6 @@
 GET http://localhost:8080/lives
 
-(agregar el token)
+(add token)
 
 response
 
