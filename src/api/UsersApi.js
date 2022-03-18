@@ -110,6 +110,7 @@ export default class UsersApi {
                 //save to database
                 const userNewBD = await this.usersDao.update(userObj)
                 const userNewObj = new UserDto(userNewBD);
+                await this.completePreference(userNewObj);
                 return userNewObj;
             } else {
                 logger.error(`Error validation email and password`);
