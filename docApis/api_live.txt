@@ -1,4 +1,4 @@
-GET http://localhost:8080/lives
+GET http://localhost:8080/live
 
 (add token)
 
