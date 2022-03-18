@@ -20,9 +20,6 @@ app.use(urlencoded({ extended: true }))
 app.use(
     cors({
       origin: ["*"],
-      methods: ["GET", "POST", "DELETE"],
-      credentials: true,
-      origin: true,
     })
   );
 
