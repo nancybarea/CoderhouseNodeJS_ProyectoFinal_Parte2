@@ -15,7 +15,9 @@ const app = express()
 
 app.use(json())
 app.use(urlencoded({ extended: true }))
-app.use(cors());
+app.use(cors({
+    origin: config.CORS_ORIG
+    }));
 
 /**************************************************************************************** */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
