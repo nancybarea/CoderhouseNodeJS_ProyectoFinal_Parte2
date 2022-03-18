@@ -22,7 +22,7 @@ app.use(passport.initialize());
 app.use('/', UsersRoutes)
 app.use('/series', SeriesRoutes)
 app.use('/music', MusicRoutes)
-app.use('/lives', LivesRoutes)
+app.use('/live', LivesRoutes)
 app.use('/movies', MoviesRoutes)
 
 //routes not found
