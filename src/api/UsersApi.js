@@ -1,11 +1,13 @@
 import logger from '../logger.js'
-//dao
+import CustomError from '../errores/CustomError.js';
+
+//daos
 import UsersDao from '../model/daos/UsersDao.js';
 import MoviesDao from '../model/daos/MoviesDao.js'
 import LivesDao from '../model/daos/LivesDao.js'
 import MusicDao from '../model/daos/MusicDao.js'
 import SeriesDao from '../model/daos/SeriesDao.js'
-//dto
+//dtos
 import UserDto from '../model/dtos/UserDto.js';
 import SerieDto from '../model/dtos/SerieDto.js'
 import MovieDto from '../model/dtos/MovieDto.js'
@@ -203,15 +205,16 @@ export default class UsersApi {
 
             //data y object serie. 
             const dataLive = await this.livesDao.getByObjectId(id);
-            const live = new MusicDto(dataLive);
+            const live = new LiveDto(dataLive);
     
             // find if movie exists in series collection
             // if exists  --> delete (later I add it with updated date)
             //await this.usersDao.delSeries(email, id);  
             //------ pending task ------
     
+            let dataUser = await this.usersDao.delLive(email, id);
             // add new serie to user
-            let dataUser = await this.usersDao.addLive(email, live.getForUser());
+            dataUser = await this.usersDao.addLive(email, live.getForUser());
             let userUpdateObj = new UserDto(dataUser);
     
             //if it have more than 3 series delete the oldest date

@@ -28,7 +28,7 @@ export default class UsersDao extends ContainerDao {
     return await super.getById({ email: email })
   }
 
-  async delLive(email, live) {
+  async delLive(email, id) {
     await this.collection.updateOne(
       { email: email },
       { '$pull': { live: { _id: { $eq: ObjectId(id) }} } })
@@ -42,7 +42,7 @@ export default class UsersDao extends ContainerDao {
     return await super.getById({ email: email })
   }
 
-  async delMovie(email, movie) {
+  async delMovie(email, id) {
     await this.collection.updateOne(
       { email: email },
       { '$pull': { movies: { _id: { $eq: ObjectId(id) }} } })
@@ -77,7 +77,7 @@ export default class UsersDao extends ContainerDao {
     return await super.getById({ email: email })
   }
 
-  async delMusic(email, music) {
+  async delMusic(email, id) {
     await this.collection.updateOne(
       { email: email },
       { '$pull': { music: { _id: { $eq: ObjectId(id) }} } })
