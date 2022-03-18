@@ -1,0 +1,383 @@
+{
+	"info": {
+		"_postman_id": "2bed2821-da4d-4df5-bdb0-c9c1575697e0",
+		"name": "Equipo9_hackathon",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "http://localhost:8080/signup",
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"nancybarea@gmail.com\",\r\n    \"password\": \"123456\",\r\n    \"firstname\": \"Nancy\",\r\n    \"lastname\":\"Barea\",\r\n    \"avatar\": \"https://avatars.githubusercontent.com/u/91162843?v=4\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/signup",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"signup"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/login",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"email\": \"nancybarea@gmail.com\",\r\n    \"password\": \"equipo9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/password",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjEzMDEyLCJleHAiOjE2NDc2MTY2MTJ9.CdLsG7iG057TIu6Ua_-crZxhHxVDjqMf_UNNm8Qgr7Q",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"passwordCurrent\": \"123456\",\r\n    \"passwordNew\": \"equipo9\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/password",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"password"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/live/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"email\": \"nancybarea@gmail.com\",\r\n        \"firstname\": \"Nancy\",\r\n        \"lastname\": \"Barea\",\r\n        \"avatar\": \"https://avatars.githubusercontent.com/u/91162843?v=4\",\r\n        \"preference\": {\r\n            \"live\": [\r\n                {\r\n                    \"_id\": \"62334b63ca8cfa1d3e0644ee\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"name\": \"TN\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/4/4f/TN_todo_noticias_logo.svg\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c38008a654991ad5aff\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=InSydaLSSlw\",\r\n                    \"name\": \"Cronica\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Cr%C3%B3nica_TV_logotipo_%282016%29.png/200px-Cr%C3%B3nica_TV_logotipo_%282016%29.png\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c8a008a654991ad5b00\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=7_oQ0OJ2F0M\",\r\n                    \"name\": \"TV Pública\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg/200px-TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg.png\",\r\n                    \"date\": 1647614056591\r\n                }\r\n            ],\r\n            \"movies\": [\r\n                {\r\n                    \"_id\": \"62334935c3c038d5f96b5e31\",\r\n                    \"name\": \"The Batman\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=fWQrd6cwJ0A\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"623349f7c3c038d5f96b5e32\",\r\n                    \"name\": \"The Adam Project\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=IE8HIsIrq4o\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWM0YWMwMDQtMjE5NS00ZTIwLWE1NWEtODViMWZjMWI2OTU3XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_FMjpg_UX1014_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"62334a02c3c038d5f96b5e33\",\r\n                    \"name\": \"Spider Man - No way home\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=SkmRT3M4Vx4\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                }\r\n            ],\r\n            \"series\": [\r\n                {\r\n                    \"_id\": \"62334af417a50e9fc1c1ef92\",\r\n                    \"name\": \"Vikingo\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BM2VhOTZhYWYtZTU4ZC00YThkLTkxNzktMTMyYWI4MzVkMjFiXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_FMjpg_UX450_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334b5a17a50e9fc1c1ef93\",\r\n                    \"name\": \"Titanes\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BNTE3MmQ4ZGYtMzBkYy00Yjg0LThhYTctZDgyZDE0YTZmOGUxXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UX1015_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334c0617a50e9fc1c1ef95\",\r\n                    \"name\": \"Stranger Things\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=EPgMTdmsVoE\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWI5ODc5MmYtYTU0Yi00MzVmLWEzZWItMWNiM2RiOTg0OGQzXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056642\r\n                }\r\n            ],\r\n            \"music\": [\r\n                {\r\n                    \"_id\": \"62334afe869376f64e188292\",\r\n                    \"name\": \"La 100\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=lZ2ve42Y-3s\",\r\n                    \"thumbnail\": \"https://yt3.ggpht.com/GijbirXXgwFRgUqwtlJ4bpm3hB_Xpe3xI23TnCOxiK9Xu2MVHhOAOFNm-RDDmLoQ2YqkCYHS1A=s176-c-k-c0x00ffffff-no-rj-mo\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62334c5c869376f64e188293\",\r\n                    \"name\": \"Radio Disney 94.3\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=03wc0G_8rE4\",\r\n                    \"thumbnail\": \"https://cdn-profiles.tunein.com/s309673/images/logog.jpg?t=1\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62335b52855671c73ce30a4c\",\r\n                    \"name\": \"Vorterix\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=RA0NU9dqttQ\",\r\n                    \"thumbnail\": \"https://i.imgur.com/szOug.png\",\r\n                    \"date\": 1647614056688\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/live/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"live",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/series/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"email\": \"nancybarea@gmail.com\",\r\n        \"firstname\": \"Nancy\",\r\n        \"lastname\": \"Barea\",\r\n        \"avatar\": \"https://avatars.githubusercontent.com/u/91162843?v=4\",\r\n        \"preference\": {\r\n            \"live\": [\r\n                {\r\n                    \"_id\": \"62334b63ca8cfa1d3e0644ee\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"name\": \"TN\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/4/4f/TN_todo_noticias_logo.svg\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c38008a654991ad5aff\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=InSydaLSSlw\",\r\n                    \"name\": \"Cronica\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Cr%C3%B3nica_TV_logotipo_%282016%29.png/200px-Cr%C3%B3nica_TV_logotipo_%282016%29.png\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c8a008a654991ad5b00\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=7_oQ0OJ2F0M\",\r\n                    \"name\": \"TV Pública\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg/200px-TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg.png\",\r\n                    \"date\": 1647614056591\r\n                }\r\n            ],\r\n            \"movies\": [\r\n                {\r\n                    \"_id\": \"62334935c3c038d5f96b5e31\",\r\n                    \"name\": \"The Batman\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=fWQrd6cwJ0A\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"623349f7c3c038d5f96b5e32\",\r\n                    \"name\": \"The Adam Project\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=IE8HIsIrq4o\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWM0YWMwMDQtMjE5NS00ZTIwLWE1NWEtODViMWZjMWI2OTU3XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_FMjpg_UX1014_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"62334a02c3c038d5f96b5e33\",\r\n                    \"name\": \"Spider Man - No way home\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=SkmRT3M4Vx4\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                }\r\n            ],\r\n            \"series\": [\r\n                {\r\n                    \"_id\": \"62334af417a50e9fc1c1ef92\",\r\n                    \"name\": \"Vikingo\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BM2VhOTZhYWYtZTU4ZC00YThkLTkxNzktMTMyYWI4MzVkMjFiXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_FMjpg_UX450_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334b5a17a50e9fc1c1ef93\",\r\n                    \"name\": \"Titanes\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BNTE3MmQ4ZGYtMzBkYy00Yjg0LThhYTctZDgyZDE0YTZmOGUxXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UX1015_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334c0617a50e9fc1c1ef95\",\r\n                    \"name\": \"Stranger Things\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=EPgMTdmsVoE\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWI5ODc5MmYtYTU0Yi00MzVmLWEzZWItMWNiM2RiOTg0OGQzXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056642\r\n                }\r\n            ],\r\n            \"music\": [\r\n                {\r\n                    \"_id\": \"62334afe869376f64e188292\",\r\n                    \"name\": \"La 100\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=lZ2ve42Y-3s\",\r\n                    \"thumbnail\": \"https://yt3.ggpht.com/GijbirXXgwFRgUqwtlJ4bpm3hB_Xpe3xI23TnCOxiK9Xu2MVHhOAOFNm-RDDmLoQ2YqkCYHS1A=s176-c-k-c0x00ffffff-no-rj-mo\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62334c5c869376f64e188293\",\r\n                    \"name\": \"Radio Disney 94.3\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=03wc0G_8rE4\",\r\n                    \"thumbnail\": \"https://cdn-profiles.tunein.com/s309673/images/logog.jpg?t=1\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62335b52855671c73ce30a4c\",\r\n                    \"name\": \"Vorterix\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=RA0NU9dqttQ\",\r\n                    \"thumbnail\": \"https://i.imgur.com/szOug.png\",\r\n                    \"date\": 1647614056688\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/series/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"series",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/music/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"email\": \"nancybarea@gmail.com\",\r\n        \"firstname\": \"Nancy\",\r\n        \"lastname\": \"Barea\",\r\n        \"avatar\": \"https://avatars.githubusercontent.com/u/91162843?v=4\",\r\n        \"preference\": {\r\n            \"live\": [\r\n                {\r\n                    \"_id\": \"62334b63ca8cfa1d3e0644ee\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"name\": \"TN\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/4/4f/TN_todo_noticias_logo.svg\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c38008a654991ad5aff\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=InSydaLSSlw\",\r\n                    \"name\": \"Cronica\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Cr%C3%B3nica_TV_logotipo_%282016%29.png/200px-Cr%C3%B3nica_TV_logotipo_%282016%29.png\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c8a008a654991ad5b00\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=7_oQ0OJ2F0M\",\r\n                    \"name\": \"TV Pública\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg/200px-TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg.png\",\r\n                    \"date\": 1647614056591\r\n                }\r\n            ],\r\n            \"movies\": [\r\n                {\r\n                    \"_id\": \"62334935c3c038d5f96b5e31\",\r\n                    \"name\": \"The Batman\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=fWQrd6cwJ0A\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"623349f7c3c038d5f96b5e32\",\r\n                    \"name\": \"The Adam Project\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=IE8HIsIrq4o\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWM0YWMwMDQtMjE5NS00ZTIwLWE1NWEtODViMWZjMWI2OTU3XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_FMjpg_UX1014_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"62334a02c3c038d5f96b5e33\",\r\n                    \"name\": \"Spider Man - No way home\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=SkmRT3M4Vx4\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                }\r\n            ],\r\n            \"series\": [\r\n                {\r\n                    \"_id\": \"62334af417a50e9fc1c1ef92\",\r\n                    \"name\": \"Vikingo\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BM2VhOTZhYWYtZTU4ZC00YThkLTkxNzktMTMyYWI4MzVkMjFiXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_FMjpg_UX450_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334b5a17a50e9fc1c1ef93\",\r\n                    \"name\": \"Titanes\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BNTE3MmQ4ZGYtMzBkYy00Yjg0LThhYTctZDgyZDE0YTZmOGUxXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UX1015_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334c0617a50e9fc1c1ef95\",\r\n                    \"name\": \"Stranger Things\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=EPgMTdmsVoE\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWI5ODc5MmYtYTU0Yi00MzVmLWEzZWItMWNiM2RiOTg0OGQzXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056642\r\n                }\r\n            ],\r\n            \"music\": [\r\n                {\r\n                    \"_id\": \"62334afe869376f64e188292\",\r\n                    \"name\": \"La 100\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=lZ2ve42Y-3s\",\r\n                    \"thumbnail\": \"https://yt3.ggpht.com/GijbirXXgwFRgUqwtlJ4bpm3hB_Xpe3xI23TnCOxiK9Xu2MVHhOAOFNm-RDDmLoQ2YqkCYHS1A=s176-c-k-c0x00ffffff-no-rj-mo\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62334c5c869376f64e188293\",\r\n                    \"name\": \"Radio Disney 94.3\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=03wc0G_8rE4\",\r\n                    \"thumbnail\": \"https://cdn-profiles.tunein.com/s309673/images/logog.jpg?t=1\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62335b52855671c73ce30a4c\",\r\n                    \"name\": \"Vorterix\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=RA0NU9dqttQ\",\r\n                    \"thumbnail\": \"https://i.imgur.com/szOug.png\",\r\n                    \"date\": 1647614056688\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/music/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"music",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/users/movies/",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"data\": {\r\n        \"email\": \"nancybarea@gmail.com\",\r\n        \"firstname\": \"Nancy\",\r\n        \"lastname\": \"Barea\",\r\n        \"avatar\": \"https://avatars.githubusercontent.com/u/91162843?v=4\",\r\n        \"preference\": {\r\n            \"live\": [\r\n                {\r\n                    \"_id\": \"62334b63ca8cfa1d3e0644ee\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"name\": \"TN\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/4/4f/TN_todo_noticias_logo.svg\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c38008a654991ad5aff\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=InSydaLSSlw\",\r\n                    \"name\": \"Cronica\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/f/fb/Cr%C3%B3nica_TV_logotipo_%282016%29.png/200px-Cr%C3%B3nica_TV_logotipo_%282016%29.png\",\r\n                    \"date\": 1647614056591\r\n                },\r\n                {\r\n                    \"_id\": \"62334c8a008a654991ad5b00\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=7_oQ0OJ2F0M\",\r\n                    \"name\": \"TV Pública\",\r\n                    \"thumbnail\": \"https://upload.wikimedia.org/wikipedia/commons/thumb/a/a5/TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg/200px-TVP_-_Televisi%C3%B3n_P%C3%BAblica_%282021%29.svg.png\",\r\n                    \"date\": 1647614056591\r\n                }\r\n            ],\r\n            \"movies\": [\r\n                {\r\n                    \"_id\": \"62334935c3c038d5f96b5e31\",\r\n                    \"name\": \"The Batman\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=fWQrd6cwJ0A\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BMDdmMTBiNTYtMDIzNi00NGVlLWIzMDYtZTk3MTQ3NGQxZGEwXkEyXkFqcGdeQXVyMzMwOTU5MDk@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"623349f7c3c038d5f96b5e32\",\r\n                    \"name\": \"The Adam Project\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=IE8HIsIrq4o\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWM0YWMwMDQtMjE5NS00ZTIwLWE1NWEtODViMWZjMWI2OTU3XkEyXkFqcGdeQXVyMTEyMjM2NDc2._V1_FMjpg_UX1014_.jpg\",\r\n                    \"date\": 1647614056545\r\n                },\r\n                {\r\n                    \"_id\": \"62334a02c3c038d5f96b5e33\",\r\n                    \"name\": \"Spider Man - No way home\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=SkmRT3M4Vx4\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056545\r\n                }\r\n            ],\r\n            \"series\": [\r\n                {\r\n                    \"_id\": \"62334af417a50e9fc1c1ef92\",\r\n                    \"name\": \"Vikingo\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BM2VhOTZhYWYtZTU4ZC00YThkLTkxNzktMTMyYWI4MzVkMjFiXkEyXkFqcGdeQXVyMTA3MTI2ODc5._V1_FMjpg_UX450_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334b5a17a50e9fc1c1ef93\",\r\n                    \"name\": \"Titanes\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=wHn1_QVoXGM\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BNTE3MmQ4ZGYtMzBkYy00Yjg0LThhYTctZDgyZDE0YTZmOGUxXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UX1015_.jpg\",\r\n                    \"date\": 1647614056642\r\n                },\r\n                {\r\n                    \"_id\": \"62334c0617a50e9fc1c1ef95\",\r\n                    \"name\": \"Stranger Things\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=EPgMTdmsVoE\",\r\n                    \"thumbnail\": \"https://m.media-amazon.com/images/M/MV5BOWI5ODc5MmYtYTU0Yi00MzVmLWEzZWItMWNiM2RiOTg0OGQzXkEyXkFqcGdeQXVyMTYzMDM0NTU@._V1_FMjpg_UY720_.jpg\",\r\n                    \"date\": 1647614056642\r\n                }\r\n            ],\r\n            \"music\": [\r\n                {\r\n                    \"_id\": \"62334afe869376f64e188292\",\r\n                    \"name\": \"La 100\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=lZ2ve42Y-3s\",\r\n                    \"thumbnail\": \"https://yt3.ggpht.com/GijbirXXgwFRgUqwtlJ4bpm3hB_Xpe3xI23TnCOxiK9Xu2MVHhOAOFNm-RDDmLoQ2YqkCYHS1A=s176-c-k-c0x00ffffff-no-rj-mo\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62334c5c869376f64e188293\",\r\n                    \"name\": \"Radio Disney 94.3\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=03wc0G_8rE4\",\r\n                    \"thumbnail\": \"https://cdn-profiles.tunein.com/s309673/images/logog.jpg?t=1\",\r\n                    \"date\": 1647614056688\r\n                },\r\n                {\r\n                    \"_id\": \"62335b52855671c73ce30a4c\",\r\n                    \"name\": \"Vorterix\",\r\n                    \"url\": \"https://www.youtube.com/watch?v=RA0NU9dqttQ\",\r\n                    \"thumbnail\": \"https://i.imgur.com/szOug.png\",\r\n                    \"date\": 1647614056688\r\n                }\r\n            ]\r\n        }\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/users/movies/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"users",
+						"movies",
+						""
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/live",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/live",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"live"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/series",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/series",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"series"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/music",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/music",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"music"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8080/movies",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/movies",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"movies"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
