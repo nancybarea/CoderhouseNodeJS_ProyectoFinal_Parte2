@@ -21,35 +21,35 @@ export default class UsersDao extends ContainerDao {
     return await super.getById({ email: user.email })
   }
 
-  async addlive(email, live) {
+  async addLive(email, live) {
     await this.collection.updateOne(
       { email: email },
       { '$push': { live: live } })
     return await super.getById({ email: email })
   }
 
-  async dellive(email, live) {
+  async delLive(email, live) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { live: { $eq: live } } })
+      { '$pull': { live: { _id: { $eq: ObjectId(id) }} } })
     return await super.getById({ email: email })
   }
 
-  async addmovie(email, movie) {
+  async addMovie(email, movie) {
     await this.collection.updateOne(
       { email: email },
-      { '$push': { movie: movie } })
+      { '$push': { movies: movie } })
     return await super.getById({ email: email })
   }
 
-  async delmovies(email, movie) {
+  async delMovie(email, movie) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { movies: { $eq: movie } } })
+      { '$pull': { movies: { _id: { $eq: ObjectId(id) }} } })
     return await super.getById({ email: email })
   }
 
-  async addSeries(email, serie) {
+  async addSerie(email, serie) {
 
     try {
       await this.collection.updateOne(
@@ -61,27 +61,26 @@ export default class UsersDao extends ContainerDao {
       logger.error(err)
       throw new CustomError(500, `Error to Add Series`, err)
     }
-
   }
 
-  async delSeries(email, id) {
+  async delSerie(email, id) {
     await this.collection.updateOne(
       { email: email },
       { '$pull': { series: { _id: { $eq: ObjectId(id) }} } })
     return await super.getById({ email: email })
   }
 
-  async addRadio(email, radio) {
+  async addMusic(email, music) {
     await this.collection.updateOne(
       { email: email },
-      { '$push': { radio: radio } })
+      { '$push': { music: music } })
     return await super.getById({ email: email })
   }
 
-  async delradio(email, radio) {
+  async delMusic(email, music) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { radio: { $eq: radio } } })
+      { '$pull': { music: { _id: { $eq: ObjectId(id) }} } })
     return await super.getById({ email: email })
   }
 
