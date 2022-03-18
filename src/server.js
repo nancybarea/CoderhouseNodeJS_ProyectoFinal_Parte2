@@ -17,11 +17,7 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 
 
-app.use(
-    cors({
-      origin: ["*"],
-    })
-  );
+app.use( cors());
 
 /**************************************************************************************** */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
