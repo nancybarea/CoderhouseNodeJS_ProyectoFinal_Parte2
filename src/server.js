@@ -1,4 +1,5 @@
 import express, { json, urlencoded } from 'express'
+import cors from 'cors';
 import passport from './controller/PassportLocal.js'
 import DefaultRoutes from "./routes/default.js"
 import UsersRoutes from './routes/users.js'
@@ -15,6 +16,15 @@ const app = express()
 app.use(json())
 app.use(urlencoded({ extended: true }))
 
+
+app.use(
+    cors({
+      origin: ["*"],
+      methods: ["GET", "POST", "DELETE"],
+      credentials: true,
+      origin: true,
+    })
+  );
 
 /**************************************************************************************** */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
