@@ -17,11 +17,7 @@ app.use(json())
 app.use(urlencoded({ extended: true }))
 
 
-app.use(
-    cors({
-      origin: ["*"],
-    })
-  );
+app.use( cors());
 
 /**************************************************************************************** */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
@@ -41,7 +37,7 @@ app.use(session({
     resave: true,
     saveUninitialized: false,
     cookie: {
-        maxAge: config.SESSION_MAXAGE
+        maxAge: 600000
     }
 }))
 
