@@ -19,7 +19,7 @@ app.use(urlencoded({ extended: true }))
 
 app.use(
     cors({
-      origin: ["https://flow-lite.herokuapp.com"],
+      origin: ["*"],
       methods: ["GET", "POST", "DELETE"],
       credentials: true,
       origin: true,
