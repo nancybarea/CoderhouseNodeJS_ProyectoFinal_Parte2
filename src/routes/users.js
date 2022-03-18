@@ -14,9 +14,9 @@ UsersRoutes.post('/signup',
     passport.authenticate('signup', { session: false, failureRedirect: '/failsignup' }),
     userController.postLogin);
 
-UsersRoutes.put('/users/password', userController.mwdIsAuth, userController.putPassword)
 
 UsersRoutes.put('/users/password', passport.authenticate('jwt', { session: false }), userController.putPassword)
+
 UsersRoutes.put('/users/series/:id', passport.authenticate('jwt', { session: false }), userController.putSerie)
 UsersRoutes.put('/users/movies/:id', passport.authenticate('jwt', { session: false }), userController.putMovie)
 UsersRoutes.put('/users/music/:id', passport.authenticate('jwt', { session: false }), userController.putMusic)

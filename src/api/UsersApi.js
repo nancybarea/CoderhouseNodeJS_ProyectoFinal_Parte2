@@ -220,7 +220,7 @@ export default class UsersApi {
             //dataUser = await this.usersDao.delSeries(email, id);
             //userUpdateObj = new UserDto(dataUser);
             //------ pending task ------
-    
+            await this.completePreference(userUpdateObj);
             return userUpdateObj;
         }
 

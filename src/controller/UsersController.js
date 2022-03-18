@@ -43,14 +43,15 @@ export async function postLogin(req, res) {
     res.status(200).json({ data: user, token })
 }
 
-export function mdwValidateToken(token, cb) {
+export async function mdwValidateToken(token, cb) {
 
     if (token.exp < Math.floor(Date.now() / 1000)) {
         logger.warn('token caducado')
         return cb(null, false)
     }
     else {
-        const user = users.get(token.email)
+        const user = await users.get(token.email)
+   
         return cb(null, user);
     }
 }
