@@ -1,11 +1,11 @@
 import { Router } from 'express'
+import passport from '../controller/PassportLocal.js'
 
 import  * as musicController from '../controller/MusicController.js'
-import {mwdIsAuth} from '../controller/UsersController.js'
 
 const MusicRoutes = new Router();
 
-MusicRoutes.get('/', mwdIsAuth, musicController.getAll)
+MusicRoutes.get('/', passport.authenticate('jwt', { session: false }), musicController.getAll)
 
 
 export default MusicRoutes 

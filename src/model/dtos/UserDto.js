@@ -48,6 +48,7 @@ export default class UsuarioDto {
         }
     }
 
+    
     isValidPassword(password) {
         return bCrypt.compareSync(password, this.password);
     }

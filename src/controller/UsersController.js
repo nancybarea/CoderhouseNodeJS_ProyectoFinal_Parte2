@@ -1,5 +1,8 @@
 import UsersApi from '../api/UsersApi.js'
 import logger from '../logger.js'
+import jwt from 'jsonwebtoken'
+import {jwtOpts} from '../../config/config.js'
+
 import schema, {schPassword} from '../validations/users.js'
 
 const users = new UsersApi();
@@ -34,9 +37,25 @@ export async function mdwLogin(email, password, done) {
 
 };
 
-export function postLogin(req, res) {
-    res.status(200).json(req.user)
+export async function postLogin(req, res) {
+    const user = req.user;
+    const payload = {email: user.email}
+    const token = jwt.sign( payload, jwtOpts.secretOrKey, { expiresIn: jwtOpts.expireIn });
+    res.status(200).json({ data: user, token })
 }
+
+export function mdwValidateToken(token, cb) {
+
+    if (token.exp < Math.floor(Date.now() / 1000)) {
+        logger.warn('token caducado')
+        return cb(null, false)
+    }
+    else {
+        const user = users.get(token.email)
+        return cb(null, user);
+    }
+}
+
 
 export function postSignup(req, res) {
     res.status(200).json(req.user)

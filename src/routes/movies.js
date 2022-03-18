@@ -1,11 +1,10 @@
 import { Router } from "express";
-
+import passport from '../controller/PassportLocal.js'
 import * as moviesController from "../controller/MoviesController.js";
-import {mwdIsAuth} from "../controller/UsersController.js";
 
 const MoviesRoute  = new Router();
 
-MoviesRoute.get("/movies", mwdIsAuth, moviesController.getAll);
+MoviesRoute.get("/movies", passport.authenticate('jwt', { session: false }), moviesController.getAll);
 
 // moviesController.get("/movies/:id", mwdIsAuth, moviesController.getMovie);
 // moviesController.post("/movies", mwdIsAuth, moviesController.postMovie);
