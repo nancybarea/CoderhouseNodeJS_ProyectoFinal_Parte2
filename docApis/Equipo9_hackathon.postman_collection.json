@@ -1,12 +1,12 @@
 {
 	"info": {
-		"_postman_id": "2bed2821-da4d-4df5-bdb0-c9c1575697e0",
+		"_postman_id": "0d20c3ff-a95f-4cd7-b90e-dd416dc799cf",
 		"name": "Equipo9_hackathon",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
 	},
 	"item": [
 		{
-			"name": "http://localhost:8080/signup",
+			"name": "signUp",
 			"request": {
 				"auth": {
 					"type": "noauth"
@@ -37,7 +37,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/login",
+			"name": "login",
 			"request": {
 				"method": "POST",
 				"header": [],
@@ -65,7 +65,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/users/password",
+			"name": "changePass",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -104,7 +104,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/users/live/",
+			"name": "Live",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -144,7 +144,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/users/series/",
+			"name": "series",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -184,7 +184,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/users/music/",
+			"name": "music",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -224,7 +224,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/users/movies/",
+			"name": "movies",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -264,7 +264,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/live",
+			"name": "live",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -293,7 +293,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/series",
+			"name": "series",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -322,7 +322,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/music",
+			"name": "music",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -351,7 +351,7 @@
 			"response": []
 		},
 		{
-			"name": "http://localhost:8080/movies",
+			"name": "movies",
 			"request": {
 				"auth": {
 					"type": "bearer",
@@ -374,6 +374,36 @@
 					"port": "8080",
 					"path": [
 						"movies"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "liveOne",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6Im5hbmN5YmFyZWFAZ21haWwuY29tIiwiaWF0IjoxNjQ3NjE0ODIyLCJleHAiOjE2NDc2MTg0MjJ9.snEkaH2xX_AMyvZw-3c13L9W01_UX9-Qgx0X4kXp2aE",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/live/62334b63ca8cfa1d3e0644ee",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"live",
+						"62334b63ca8cfa1d3e0644ee"
 					]
 				}
 			},
