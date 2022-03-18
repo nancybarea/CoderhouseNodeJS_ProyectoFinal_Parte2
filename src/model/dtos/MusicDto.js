@@ -3,9 +3,9 @@ export default class MusicDto {
     _id;
     name;
     url;
-    thubmails;
+    thumbnail;
 
-    constructor({ _id, name, url, thubmails}) {
+    constructor({ _id, name, url, thumbnail}) {
 
         if (_id === undefined) {
             this._id = undefined;
@@ -16,7 +16,7 @@ export default class MusicDto {
 
         this.name = name;
         this.url = url;
-        this.thubmails = thubmails;
+        this.thumbnail = thumbnail;
     }
 
     get() {
@@ -24,7 +24,7 @@ export default class MusicDto {
             _id: this._id,
             name: this.name,
             url: this.url,
-            thubmails: this.thubmails,
+            thumbnail: this.thumbnail,
         }
     }
 
@@ -35,7 +35,7 @@ export default class MusicDto {
             _id: this._id,
             name: this.name,
             url: this.url,
-            thubmails: this.thubmails,
+            thumbnail: this.thumbnail,
             date: Date.now(),
         }
     }
