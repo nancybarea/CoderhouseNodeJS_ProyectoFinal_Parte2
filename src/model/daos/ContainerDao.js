@@ -22,7 +22,7 @@ export default class ContainerDao {
             return array
         }
         catch (err) {
-            throw new CustomError(500, `error al obtener todos los registros de la coleccion ${this.collectionName}`, err)
+            throw new CustomError(500, `Error al obtener todos los registros de la coleccion ${this.collectionName}`, err)
         }
     }
 

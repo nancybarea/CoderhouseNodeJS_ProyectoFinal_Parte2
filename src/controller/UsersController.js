@@ -147,11 +147,12 @@ export function mwdIsAuth(req, res, next) {
 }
 
 export async function putSerie(req, res) {
-    const id = req.params.id;
+    const data = req.body;
+    const email = req.user.email;
 
     try {
-        const userObj = await users.addSerie(req.user.email, id);
-        res.status(201).json(userObj.get())
+        const user = await users.setSeries(email, data);
+        res.status(201).json(user.get())
     }
     catch (err) {
         res.status(err.estado).json(err)
@@ -160,11 +161,12 @@ export async function putSerie(req, res) {
 }
 
 export async function putMovie(req, res) {
-    const id = req.params.id;
+    const data = req.body;
+    const email = req.user.email;
 
     try {
-        const userObj = await users.addMovie(req.user.email, id);
-        res.status(201).json(userObj.get())
+        const user = await users.setMovies(email, data);
+        res.status(201).json(user.get())
     }
     catch (err) {
         res.status(err.estado).json(err)
@@ -173,24 +175,26 @@ export async function putMovie(req, res) {
 }
 
 export async function putMusic(req, res) {
-    const id = req.params.id;
+    const data = req.body;
+    const email = req.user.email;
 
     try {
-        const userObj = await users.addMusic(req.user.email, id);
-        res.status(201).json(userObj.get())
+        const user = await users.setMusic(email, data);
+        res.status(201).json(user.get())
     }
     catch (err) {
         res.status(err.estado).json(err)
     }
-
 }
 
 export async function putLive(req, res) {
-    const id = req.params.id;
+    
+    const data = req.body;
+    const email = req.user.email;
 
     try {
-        const userObj = await users.addLive(req.user.email, id);
-        res.status(201).json(userObj.get())
+        const user = await users.setLive(email, data);
+        res.status(201).json(user.get())
     }
     catch (err) {
         res.status(err.estado).json(err)

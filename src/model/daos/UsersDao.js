@@ -13,12 +13,25 @@ export default class UsersDao extends ContainerDao {
 
   //encrypt and modify the password in the base 
   async update(user) {
-    //modify the password in the base
-    await this.collection.updateOne(
-      { email: user.email },
-      { $set: { password: user.password } })
 
-    return await super.getById({ email: user.email })
+    try {
+      await this.collection.updateOne(
+        { email: user.email },
+        {
+          $set: {
+            password: user.password,
+            live: user.live,
+            movies: user.movies,
+            music: user.music,
+            series: user.series
+          }
+        })
+
+      return await super.getById({ email: user.email })
+
+    } catch (err) {
+      throw new CustomError(500, 'Error al modificar el user ', err)
+    }
   }
 
   async addLive(email, live) {
@@ -31,7 +44,7 @@ export default class UsersDao extends ContainerDao {
   async delLive(email, id) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { live: { _id: { $eq: ObjectId(id) }} } })
+      { '$pull': { live: { _id: { $eq: ObjectId(id) } } } })
     return await super.getById({ email: email })
   }
 
@@ -45,7 +58,7 @@ export default class UsersDao extends ContainerDao {
   async delMovie(email, id) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { movies: { _id: { $eq: ObjectId(id) }} } })
+      { '$pull': { movies: { _id: { $eq: ObjectId(id) } } } })
     return await super.getById({ email: email })
   }
 
@@ -66,7 +79,7 @@ export default class UsersDao extends ContainerDao {
   async delSerie(email, id) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { series: { _id: { $eq: ObjectId(id) }} } })
+      { '$pull': { series: { _id: { $eq: ObjectId(id) } } } })
     return await super.getById({ email: email })
   }
 
@@ -80,7 +93,7 @@ export default class UsersDao extends ContainerDao {
   async delMusic(email, id) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { music: { _id: { $eq: ObjectId(id) }} } })
+      { '$pull': { music: { _id: { $eq: ObjectId(id) } } } })
     return await super.getById({ email: email })
   }
 

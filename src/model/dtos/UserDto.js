@@ -24,10 +24,10 @@ export default class UsuarioDto {
         }
         else {
             this._id = _id;
-            this.movies = movies||[]
-            this.series = series||[]
-            this.live = live||[]
-            this.music = music||[]
+            this.movies = movies || []
+            this.series = series || []
+            this.live = live || []
+            this.music = music || []
             this.password = password;
         }
 
@@ -48,7 +48,7 @@ export default class UsuarioDto {
         }
     }
 
-    
+
     isValidPassword(password) {
         return bCrypt.compareSync(password, this.password);
     }
@@ -57,9 +57,16 @@ export default class UsuarioDto {
         this.password = createHash(password)
     }
 
+    existe(items, array) {
+        let result = false
+        array.forEach(element => {
+            if (element.id == items.id) { result = true }
+        });
+        return result;
+    }
     setlives(lives) {
         for (const live of lives) {
-            if (this.live.length < 3) {
+            if (this.live.length < 3     ) {
                 live.date = Date.now()
                 this.live.push(live)
             }
@@ -92,7 +99,7 @@ export default class UsuarioDto {
             }
         }
     }
-    
+
 
 }
 

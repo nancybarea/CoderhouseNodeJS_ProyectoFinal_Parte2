@@ -124,109 +124,63 @@ export default class UsersApi {
     }
 
     //add new serie
-    async addSerie(email, id) {
+    async setSeries(email, series) {
+        let userDto = await this.usersDao.getByEmail(email);
+        let user = new UserDto(userDto)
+        user.series = series
 
-        //data y object serie. 
-        const dataSerie = await this.seriesDao.getByObjectId(id);
-        const serie = new SerieDto(dataSerie);
+        userDto = await this.usersDao.update(user);
+        user = new UserDto(userDto);
 
-        // find if series exists in series collection
-        // if exists  --> delete (later I add it with updated date)
-        //await this.usersDao.delSeries(email, id);  
-        //------ pending task ------
-
-        // add new serie to user
-        let dataUser = await this.usersDao.addSerie(email, serie.getForUser());
-        let userUpdateObj = new UserDto(dataUser);
-
-        //if it have more than 3 series delete the oldest date
-        // buscar en objeto --> hacer una funcion dto que me devuelva el id con la peli a borrar 
-        // si devuelve id => borro
-        //dataUser = await this.usersDao.delSeries(email, id);
-        //userUpdateObj = new UserDto(dataUser);
-        //------ pending task ------
-
-        return userUpdateObj;
+        await this.completePreference(user);
+        return user;    
     }
 
     //add new movie
-    async addMovie(email, id) {
+    async setMovies(email, movies) {
 
-        //data y object serie. 
-        const dataMovie = await this.moviesDao.getByObjectId(id);
-        const movie = new MovieDto(dataMovie);
+        let userDto = await this.usersDao.getByEmail(email);
+        let user = new UserDto(userDto)
+        user.movies = movies
 
-        // find if movie exists in series collection
-        // if exists  --> delete (later I add it with updated date)
-        //await this.usersDao.delSeries(email, id);  
-        //------ pending task ------
+        userDto = await this.usersDao.update(user);
+        user = new UserDto(userDto);
 
-        // add new serie to user
-        let dataUser = await this.usersDao.addMovie(email, movie.getForUser());
-        let userUpdateObj = new UserDto(dataUser);
+        await this.completePreference(user);
 
-        //if it have more than 3 series delete the oldest date
-        // buscar en objeto --> hacer una funcion dto que me devuelva el id con la peli a borrar 
-        // si devuelve id => borro
-        //dataUser = await this.usersDao.delSeries(email, id);
-        //userUpdateObj = new UserDto(dataUser);
-        //------ pending task ------
-
-        return userUpdateObj;
+        return user;
     }
 
-    //add new music
-    async addMusic(email, id) {
+    //set new music
+    async setMusic(email, music) {
 
-        //data y object serie. 
-        const dataMusic = await this.musicDao.getByObjectId(id);
-        const music = new MusicDto(dataMusic);
+        let userDto = await this.usersDao.getByEmail(email);
+        let user = new UserDto(userDto)
+        user.music = music
 
-        // find if movie exists in series collection
-        // if exists  --> delete (later I add it with updated date)
-        //await this.usersDao.delSeries(email, id);  
-        //------ pending task ------
+        userDto = await this.usersDao.update(user);
+        user = new UserDto(userDto);
 
-        // add new serie to user
-        let dataUser = await this.usersDao.addMusic(email, music.getForUser());
-        let userUpdateObj = new UserDto(dataUser);
+        await this.completePreference(user);
 
-        //if it have more than 3 series delete the oldest date
-        // buscar en objeto --> hacer una funcion dto que me devuelva el id con la peli a borrar 
-        // si devuelve id => borro
-        //dataUser = await this.usersDao.delSeries(email, id);
-        //userUpdateObj = new UserDto(dataUser);
-        //------ pending task ------
+        return user;
 
-        return userUpdateObj;
     }
 
-        //add new music
-        async addLive(email, id) {
+    //set new music
+    async setLive(email, live) {
 
-            //data y object serie. 
-            const dataLive = await this.livesDao.getByObjectId(id);
-            const live = new LiveDto(dataLive);
-    
-            // find if movie exists in series collection
-            // if exists  --> delete (later I add it with updated date)
-            //await this.usersDao.delSeries(email, id);  
-            //------ pending task ------
-    
-            let dataUser = await this.usersDao.delLive(email, id);
-            // add new serie to user
-            dataUser = await this.usersDao.addLive(email, live.getForUser());
-            let userUpdateObj = new UserDto(dataUser);
-    
-            //if it have more than 3 series delete the oldest date
-            // buscar en objeto --> hacer una funcion dto que me devuelva el id con la peli a borrar 
-            // si devuelve id => borro
-            //dataUser = await this.usersDao.delSeries(email, id);
-            //userUpdateObj = new UserDto(dataUser);
-            //------ pending task ------
-            await this.completePreference(userUpdateObj);
-            return userUpdateObj;
-        }
+        let userDto = await this.usersDao.getByEmail(email);
+        let user = new UserDto(userDto)
+        user.live = live
+
+        userDto = await this.usersDao.update(user);
+        user = new UserDto(userDto);
+
+        await this.completePreference(user);
+
+        return user;
+    }
 
 }
 

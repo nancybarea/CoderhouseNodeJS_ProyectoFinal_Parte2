@@ -17,10 +17,10 @@ UsersRoutes.post('/signup',
 
 UsersRoutes.put('/users/password', passport.authenticate('jwt', { session: false }), userController.putPassword)
 
-UsersRoutes.put('/users/series/:id', passport.authenticate('jwt', { session: false }), userController.putSerie)
-UsersRoutes.put('/users/movies/:id', passport.authenticate('jwt', { session: false }), userController.putMovie)
-UsersRoutes.put('/users/music/:id', passport.authenticate('jwt', { session: false }), userController.putMusic)
-UsersRoutes.put('/users/lives/:id', passport.authenticate('jwt', { session: false }), userController.putLive)
+UsersRoutes.put('/users/series/', passport.authenticate('jwt', { session: false }), userController.putSerie)
+UsersRoutes.put('/users/movies/', passport.authenticate('jwt', { session: false }), userController.putMovie)
+UsersRoutes.put('/users/music/',  passport.authenticate('jwt', { session: false }), userController.putMusic)
+UsersRoutes.put('/users/lives/',  passport.authenticate('jwt', { session: false }), userController.putLive)
 
 
 UsersRoutes.get('/faillogin', userController.getfaillogin)
