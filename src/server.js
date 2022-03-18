@@ -37,7 +37,7 @@ app.use(session({
     resave: true,
     saveUninitialized: false,
     cookie: {
-        maxAge: config.SESSION_MAXAGE
+        maxAge: 600000
     }
 }))
 
