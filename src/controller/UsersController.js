@@ -71,10 +71,13 @@ export function getfailsignup(req, res) {
 }
 
 export function getlogout(req, res) {
-    req.session.destroy(err => {
-        if (!err) res.status(200).json({ 'status': 'ok' })
-        else res.status(500).send({ status: 'Logout ERROR', body: err })
-    })
+    console.log(req.body)
+    console.log("hola")
+    console.log(req.session)
+    // req.session.destroy(err => {
+    //     if (!err) res.status(200).json({ 'status': 'ok' })
+    //     else res.status(500).send({ status: 'Logout ERROR', body: err })
+    // })
 }
 
 
