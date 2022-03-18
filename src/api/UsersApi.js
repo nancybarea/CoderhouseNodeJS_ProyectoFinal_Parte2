@@ -122,24 +122,26 @@ export default class UsersApi {
 
        //add new serie
        async addSeries(email, id) {
+
+        //data y object serie. 
         const dataSerie = await this.seriesDao.getByObjectId(id);
         const serie = new SerieDto(dataSerie);
 
-        //buscar si ya existe la serie y borrar o cam biar la fecha
+        // find if series exists in series collection
+        // if exists  --> delete (later I add it with updated date)
+        //await this.usersDao.delSeries(email, id);  
+        //------ pending task ------
 
-        //await this.usersDao.delSeries(email, id);
-      
-
+        // add new serie to user
         let dataUser = await this.usersDao.addSeries(email, serie.getForUser());
         let userUpdateObj = new UserDto(dataUser);
 
-        //si tiene mas de 3 borrar el date mas antiguo
-
-        //si --> borro la mas vieja 
-        // funcion dto que me devuelva idcon la peli a borrar 
+        //if it have more than 3 series delete the oldest date
+        // buscar en objeto --> hacer una funcion dto que me devuelva el id con la peli a borrar 
         // si devuelve id => borro
-        //dataUser = await this.usersDao.delSeries(email, id);
-        //userUpdateObj = new UserDto(dataUser);
+            //dataUser = await this.usersDao.delSeries(email, id);
+            //userUpdateObj = new UserDto(dataUser);
+        //------ pending task ------
 
         return userUpdateObj;        
     }
