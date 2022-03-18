@@ -18,14 +18,14 @@ app.use(passport.initialize());
 
 /**************************************************************************************** */
 
-// rutas apiRestFull
+// routes apiRestFull
 app.use('/', UsersRoutes)
 app.use('/series', SeriesRoutes)
 app.use('/music', MusicRoutes)
 app.use('/lives', LivesRoutes)
 app.use('/movies', MoviesRoutes)
 
-//rutas no encontrada
+//routes not found
 app.use('/*', DefaultRoutes)
 
 export default app
