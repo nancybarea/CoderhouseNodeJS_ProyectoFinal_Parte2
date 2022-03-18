@@ -50,16 +50,24 @@ export default class UsersDao extends ContainerDao {
   }
 
   async addSeries(email, serie) {
-    await this.collection.updateOne(
-      { email: email },
-      { '$push': { series: serie } })
-    return await super.getById({ email: email })
+
+    try {
+      await this.collection.updateOne(
+        { email: email },
+        { '$push': { series: serie } })
+      return await super.getById({ email: email })
+    }
+    catch (err) {
+      logger.error(err)
+      throw new CustomError(500, `Error to Add Series`, err)
+    }
+
   }
 
-  async delSeries(email, serie) {
+  async delSeries(email, id) {
     await this.collection.updateOne(
       { email: email },
-      { '$pull': { series: { $eq: serie } } })
+      { '$pull': { series: { _id: { $eq: ObjectId(id) }} } })
     return await super.getById({ email: email })
   }
 

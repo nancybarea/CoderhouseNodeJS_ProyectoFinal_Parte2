@@ -11,6 +11,8 @@ UsersRoutes.post('/signup', userController.mdwValidaUser, passport.authenticate(
 
 UsersRoutes.put('/users/password', userController.mwdIsAuth, userController.putPassword)
 
+UsersRoutes.put('/users/series/:id', userController.mwdIsAuth, userController.putSerie)
+
 UsersRoutes.get('/faillogin', userController.getfaillogin)
 
 UsersRoutes.get('/failsignup', userController.getfailsignup)
