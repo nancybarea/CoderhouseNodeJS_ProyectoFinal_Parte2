@@ -15,10 +15,17 @@ const app = express()
 
 app.use(json())
 app.use(urlencoded({ extended: true }))
-app.use(cors({
-    origin: `https://flow-lite.herokuapp.com`,  //react's address
-    credentials: true
-}));
+
+
+app.use(
+    cors({
+      origin: ["https://flow-lite.herokuapp.com"],
+      methods: ["GET", "POST", "DELETE"],
+      credentials: true,
+      origin: true,
+    })
+  );
+
 /**************************************************************************************** */
 const advancedOptions = { useNewUrlParser: true, useUnifiedTopology: true }
 
