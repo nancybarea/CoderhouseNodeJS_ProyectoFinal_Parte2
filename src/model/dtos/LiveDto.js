@@ -1,4 +1,4 @@
-export default class SerieDto {
+export default class LiveDto {
 
     _id;
     name;

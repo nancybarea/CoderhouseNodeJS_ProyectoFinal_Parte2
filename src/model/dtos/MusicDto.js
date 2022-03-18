@@ -1,4 +1,4 @@
-export default class SerieDto {
+export default class MusicDto {
 
     _id;
     name;
