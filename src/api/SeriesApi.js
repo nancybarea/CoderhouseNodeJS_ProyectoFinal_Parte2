@@ -10,7 +10,6 @@ export default class SeriesApi {
         const seriesObj = await this.seriesDao.getAll();
         return seriesObj;
     }   
-
 }
 
 

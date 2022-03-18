@@ -83,6 +83,20 @@ export async function putPassword(req, res) {
 }
 
 
+export async function putSerie(req, res) {
+    const id = req.params.id;
+
+    try{
+        const userObj= await users.addSeries(req.user.email, id);
+        res.status(201).json(userObj.get()) 
+    }
+    catch(err){
+        res.status(err.estado).json(err)
+    }
+
+}
+
+
 export async function postRole(req, res) {
     const user = await users.AgregarRole(req.body.email, req.body.role);
     res.status(201).json(user.get())
