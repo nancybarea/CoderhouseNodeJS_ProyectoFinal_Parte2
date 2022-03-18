@@ -1,6 +1,6 @@
 import UsersApi from '../api/UsersApi.js'
 import logger from '../logger.js'
-import schema, {schPassword} from '../validations/users.js'
+import schema, { schPassword } from '../validations/users.js'
 
 const users = new UsersApi();
 
@@ -60,42 +60,27 @@ export function getlogout(req, res) {
 
 
 export async function putPassword(req, res) {
-    const user = req.user 
+    const user = req.user
     let passwordCurrent
     let passwordNew
 
-    try{
+    try {
         const data = await schPassword.validateAsync(req.body)
         passwordCurrent = data.passwordCurrent
         passwordNew = data.passwordNew
     }
-    catch(err){
+    catch (err) {
         res.status(400).json(err)
     }
 
-    try{
-        const userObj= await users.changePassword(user, passwordCurrent, passwordNew);
-        res.status(201).json(userObj.get()) 
+    try {
+        const userObj = await users.changePassword(user, passwordCurrent, passwordNew);
+        res.status(201).json(userObj.get())
     }
-    catch(err){
+    catch (err) {
         res.status(err.estado).json(err)
     }
 }
-
-
-export async function putSerie(req, res) {
-    const id = req.params.id;
-
-    try{
-        const userObj= await users.addSeries(req.user.email, id);
-        res.status(201).json(userObj.get()) 
-    }
-    catch(err){
-        res.status(err.estado).json(err)
-    }
-
-}
-
 
 export async function postRole(req, res) {
     const user = await users.AgregarRole(req.body.email, req.body.role);
@@ -136,9 +121,60 @@ export async function mdwValidaUser(req, res, next) {
 
 export function mwdIsAuth(req, res, next) {
     if (req.isAuthenticated()) {
-      next()
+        next()
     } else {
-      res.status(401).json({ error: 'Acceso no autorizado' })
+        res.status(401).json({ error: 'Acceso no autorizado' })
     }
-  }
-  
+}
+
+export async function putSerie(req, res) {
+    const id = req.params.id;
+
+    try {
+        const userObj = await users.addSerie(req.user.email, id);
+        res.status(201).json(userObj.get())
+    }
+    catch (err) {
+        res.status(err.estado).json(err)
+    }
+
+}
+
+export async function putMovie(req, res) {
+    const id = req.params.id;
+
+    try {
+        const userObj = await users.addMovie(req.user.email, id);
+        res.status(201).json(userObj.get())
+    }
+    catch (err) {
+        res.status(err.estado).json(err)
+    }
+
+}
+
+export async function putMusic(req, res) {
+    const id = req.params.id;
+
+    try {
+        const userObj = await users.addMusic(req.user.email, id);
+        res.status(201).json(userObj.get())
+    }
+    catch (err) {
+        res.status(err.estado).json(err)
+    }
+
+}
+
+export async function putLive(req, res) {
+    const id = req.params.id;
+
+    try {
+        const userObj = await users.addLive(req.user.email, id);
+        res.status(201).json(userObj.get())
+    }
+    catch (err) {
+        res.status(err.estado).json(err)
+    }
+
+}
