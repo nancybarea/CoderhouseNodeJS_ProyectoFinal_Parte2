@@ -13,7 +13,6 @@ export default class LivesApi {
     }   
 
     async getByObjectId(id) {
-        console.log(id)
         const livesObj = await this.livesDao.getByObjectId(id);
         return livesObj;
     }   
