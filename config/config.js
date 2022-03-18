@@ -13,5 +13,5 @@ export default {
   MONGO_SESSION_URL: process.env.SESSION_URL||'noURL',
   SESSION_MAXAGE: process.env.SESSION_MAXAGE || 600000,
   SECRET:process.env.SECRET || 'Thebestteam9',
-
+  CORS_ORIG: process.env.CORS_ORIG || '*'
 }
