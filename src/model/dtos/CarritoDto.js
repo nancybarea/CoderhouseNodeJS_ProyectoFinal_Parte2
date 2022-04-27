@@ -1,11 +1,10 @@
 export default class CarritoDto {
 
     _id;
-    name;
-    url;
-    thumbnail;
+    idUsuario;
+    productos;
 
-    constructor({ _id, name, url, thumbnail}) {
+    constructor({ _id, idUsuario, productos}) {
 
         if (_id === undefined) {
             this._id = undefined;
@@ -14,17 +13,15 @@ export default class CarritoDto {
             this._id = _id;
         }
 
-        this.name = name;
-        this.url = url;
-        this.thumbnail = thumbnail;
+        this.idUsuario = idUsuario;
+        this.productos = productos;
     }
 
     get() {
         return {
             _id: this._id,
-            name: this.name,
-            url: this.url,
-            thumbnail: this.thumbnail,
+            idUsuario: this.idUsuario,
+            productos: this.productos,
         }
     }
 

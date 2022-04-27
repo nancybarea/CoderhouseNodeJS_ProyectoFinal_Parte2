@@ -1,22 +1,26 @@
-import { MongoClient, ObjectId } from 'mongodb';
-import CustomError from '../../../errores/CustomError.js'
+import admin from "firebase-admin";
+import CustomError from '../../../errores/CustomError.js';
+import config from '../../../../config/config.js';
 
-const mongo_url = process.env.MONGO_URL
-const base = process.env.MONGO_BASE
+admin.initializeApp({
+    credential: admin.credential.cert(config.firebase)
+});
 
-const client = new MongoClient(mongo_url, { serverSelectionTimeOutMS: 5000 });
-await client.connect();
+const db = admin.firestore()
 
 export default class ContainerDao {
 
     constructor(collection) {
         this.collectionName = collection
-        this.collection = client.db(base).collection(collection)
+        this.collection = db.collection(collection) 
     }
 
     async getAll() {
         try {
-            const array = await this.collection.find().toArray()
+            const query = await this.collection.get();
+            let array = query.docs;
+            console.log("getAll")
+            console.log(array)
             return array
         }
         catch (err) {
