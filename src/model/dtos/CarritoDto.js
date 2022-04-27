@@ -1,4 +1,4 @@
-export default class MovieDto {
+export default class CarritoDto {
 
     _id;
     name;
@@ -25,18 +25,6 @@ export default class MovieDto {
             name: this.name,
             url: this.url,
             thumbnail: this.thumbnail,
-        }
-    }
-
-
-    getForUser() {
-
-        return {
-            _id: this._id,
-            name: this.name,
-            url: this.url,
-            thumbnail: this.thumbnail,
-            date: Date.now(),
         }
     }
 

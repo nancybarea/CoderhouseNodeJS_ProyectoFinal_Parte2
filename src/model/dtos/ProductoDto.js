@@ -1,4 +1,4 @@
-export default class SerieDto {
+export default class ProductoDto {
 
     _id;
     name;
@@ -25,18 +25,6 @@ export default class SerieDto {
             name: this.name,
             url: this.url,
             thumbnail: this.thumbnail,
-        }
-    }
-
-
-    getForUser() {
-
-        return {
-            _id: this._id,
-            name: this.name,
-            url: this.url,
-            thumbnail: this.thumbnail,
-            date: Date.now(),
         }
     }
 
