@@ -1,34 +1,21 @@
-import ContainerDao from './ContainerDao.js';
+import config from '../../../config/config.js'
+import MongoCarritosDao from './Mongo/CarritosDao.js';
 
+let baseDeDatos = config.TIPO_PERSISTENCIA;
+let carrito;
 
-export default class CarritosDao extends ContainerDao {
-
-  constructor() {
-    super('carritos')
-  }
-
-  async updatePushProductoAlCarrito(idCarrito, objProductoNuevo) {
-    try {
-      await this.collection.updateOne(
-        { idCarrito: idCarrito },
-        { '$push': { productos: objProductoNuevo } })
-      return await super.getById({ idCarrito: idCarrito })
+if (baseDeDatos == "Mongo"){
+    carrito = class CarritosGeneralDao extends MongoCarritosDao {
+        constructor() {
+            super()
+        }
     }
-    catch (err) {
-      throw new CustomError(500, `Error al agregar un producto al carrito`, err)
+}else{
+    carrito =  class CarritosGeneralDao extends MongoCarritosDao {
+        constructor() {
+            super()
+        }
     }
-  }
-
-  async updatePullProductoAlCarrito(idCarrito, codigoProducto) {
-    try {
-      await this.collection.updateOne(
-        { idCarrito: idCarrito },
-        { '$pull': { productos: { "codigoProducto" : { $eq: codigoProducto } } } })
-      return await super.getById({ idCarrito: idCarrito })
-    }
-    catch (err) {
-      throw new CustomError(500, `Error al agregar un producto al carrito`, err)
-    }
-  }
-
 }
+
+export default carrito;

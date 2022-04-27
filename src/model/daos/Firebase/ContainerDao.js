@@ -1,5 +1,5 @@
 import { MongoClient, ObjectId } from 'mongodb';
-import CustomError from '../../errores/CustomError.js'
+import CustomError from '../../../errores/CustomError.js'
 
 const mongo_url = process.env.MONGO_URL
 const base = process.env.MONGO_BASE

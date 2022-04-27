@@ -1,10 +1,22 @@
-import ContainerDao from './ContainerDao.js';
+import config from '../../../config/config.js'
+import MongoProductosDao from './Mongo/ProductosDao.js';
 
+let baseDeDatos = config.TIPO_PERSISTENCIA;
+let producto;
 
-export default class ProductosDao extends ContainerDao {
-
-  constructor() {
-    super('productos')
-  }
-  
+if (baseDeDatos == "Mongo"){
+    producto = class ProductosGeneralDao extends MongoProductosDao {
+        constructor() {
+            super()
+        }
+    }
+}else{
+    producto =  class ProductosGeneralDao extends MongoProductosDao {
+        constructor() {
+            super()
+        }
+    }
 }
+
+export default producto;
+

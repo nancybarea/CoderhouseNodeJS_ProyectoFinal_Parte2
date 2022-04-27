@@ -17,6 +17,7 @@ export async function obtenerCarritos(req, res) {
 export async function obtenerProductosDelCarrito(req, res) {
     try{
         let idCarrito = req.params.idCarrito;
+        //let idUsuario = "nancybarea@gmail.com";
         const carrito = await carritos.getProductosDelCarrito(idCarrito)
         res.status(200).json(carrito)
     }
