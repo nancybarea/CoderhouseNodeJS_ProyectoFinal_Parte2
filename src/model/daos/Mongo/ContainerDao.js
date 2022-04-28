@@ -24,26 +24,12 @@ export default class ContainerDao {
         }
     }
 
-    async getById(query) {
+    async getById(id) {
         let wanted
+        let query= {"id": id};
+       
         try {
             wanted = await this.collection.findOne(query);
-        }
-        catch (err) {
-            throw new CustomError(500, `Error when obtaining a Document by code in the collection ${this.collectionName}`, err)
-        }
-
-        if (!wanted) {
-            throw new CustomError(404, `Document not found with that ${JSON.stringify(query)}`)
-        }
-        return wanted
-    }
-
-    async getByObjectId(idCarrito) {
-        let wanted
-        try {
-            wanted = await this.collection.find({ "_id": ObjectId(idCarrito) } );
-            console.log(wanted)
         }
         catch (err) {
             throw new CustomError(500, `Error when obtaining a Document by code in the collection ${this.collectionName}`, err)
@@ -65,37 +51,23 @@ export default class ContainerDao {
         }
     }
 
-    async update(query) {
+    async update(id, query) {
         try {
-            const { insertedId } = await this.collection.updateOne(query)
-            return insertedId;
-        }
-        catch (err) {
+            this.deleteById(id);
+            this.add(query)      
+        } catch (error) {
             throw new CustomError(500, `Error update mongo document to collection ${this.collectionName}`, err)
         }
     }
-   
-   
-    async deleteById(query) {
+      
+    async deleteById(id) {
+
+        let query= {"id": id};
         await this.collection.deleteOne(query, function (err, obj) {
             if (err) {
-                throw new CustomError(500, `Error getting all documents in collection ${this.collectionName}`, err)
-            }
+                throw new CustomError(500, `Error when delete a documents in collection ${this.collectionName}`, err)
+            } 
         });
-    }
-
-    async deleteByObjectId(idCarrito) {
-        let wanted
-        try {
-            wanted = await this.collection.deleteOne({ "_id": ObjectId(idCarrito) });
-        }
-        catch (err) {
-            throw new CustomError(500, `Error when obtaining a Document by code in the collection ${this.collectionName}`, err)
-        }
-        if (!wanted) {
-            throw new CustomError(404, `Document not found with that ${JSON.stringify(_id)}`)
-        }
-        return wanted
     }
 
 }

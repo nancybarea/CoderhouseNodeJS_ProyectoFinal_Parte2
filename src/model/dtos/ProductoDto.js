@@ -1,7 +1,7 @@
 export default class ProductoDto {
 
     _id;
-    codigo;
+    id;
     fechaHora;
     nombre;
     descripcion;
@@ -9,7 +9,7 @@ export default class ProductoDto {
     imagenURL;
     stock;
 
-    constructor({ _id, codigo, fechaHora, nombre, descripcion, precio, imagenURL, stock}) {
+    constructor({ _id, id, fechaHora, nombre, descripcion, precio, imagenURL, stock}) {
 
         if (_id === undefined) {
             this._id = undefined;
@@ -18,7 +18,7 @@ export default class ProductoDto {
             this._id = _id;
         }
 
-        this.codigo = codigo;
+        this.id = id;
         this.fechaHora = fechaHora;
         this.nombre = nombre;
         this.descripcion = descripcion;
@@ -30,7 +30,7 @@ export default class ProductoDto {
     get() {
         return {
             _id: this._id,
-            codigo: this.codigo,
+            id: this.id,
             fechaHora: this.fechaHora,
             nombre: this.nombre,
             descripcion: this.descripcion,

@@ -11,9 +11,9 @@ export default class ProductosApi {
         return productosObj;
     }   
 
-    async getProducto(codigo) {
-        const productosObj = await this.productosDao.getById({codigo: codigo});
-        return productosObj;
+    async getProducto(id) {
+        const productosObj = await this.productosDao.getById(id);
+        return productosObj; 
     }   
 
     async addProducto(objeto) {
@@ -21,14 +21,13 @@ export default class ProductosApi {
         return productosObj;
     }   
 
-    async putProducto(codigo, objeto) {
-        await this.productosDao.deleteById({codigo: codigo});
-        const productosObj = await this.productosDao.add(objeto);
+    async putProducto(id, objeto) {
+        const productosObj = await this.productosDao.update(id, objeto);
         return productosObj;
     }   
 
-    async deleteProducto(codigo) {
-        const productosObj = await this.productosDao.deleteById({codigo: codigo});
+    async deleteProducto(id) {
+        const productosObj = await this.productosDao.deleteById(id);
         return productosObj;
     }       
     

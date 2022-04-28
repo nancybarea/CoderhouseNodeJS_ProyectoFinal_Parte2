@@ -11,31 +11,28 @@ export default class CarritosApi {
         return carritosObj;
     }   
     
-    async getProductosDelCarrito(idCarrito) {
-        const carritosObj = await this.carritosDao.getById({idCarrito: idCarrito});
+    async getProductosDelCarrito(idUsuario) {
+        const carritosObj = await this.carritosDao.getById(idUsuario);
        return carritosObj;
     }     
 
     async addCarrito(objeto) {
         const carritosObj = await this.carritosDao.add(objeto);
-    //    await this.carritosDao.update(
-    //        { "idCarrito": "" },
-    //        { $set : {"idCarrito": carritosObj.toString() } })
         return carritosObj;
     }  
 
-    async addProductoAlCarrito(idCarrito, objProductoNuevo) {
-        const carritosObj = await this.carritosDao.updatePushProductoAlCarrito(idCarrito, objProductoNuevo);
+    async addProductoAlCarrito(idUsuario, objProductoNuevo) {
+        const carritosObj = await this.carritosDao.updatePushProductoAlCarrito(idUsuario, objProductoNuevo);
        return carritosObj;
     }    
 
-    async deleteProductoAlCarrito(idCarrito, codigoProducto) {
-        const carritosObj = await this.carritosDao.updatePullProductoAlCarrito(idCarrito, codigoProducto);
+    async deleteProductoAlCarrito(idUsuario, codigoProducto) {
+        const carritosObj = await this.carritosDao.updatePullProductoAlCarrito(idUsuario, codigoProducto);
        return carritosObj;
     }    
 
-    async deleteCarrito(idCarrito) {
-        const carritosObj = await this.carritosDao.deleteById({idCarrito: idCarrito});
+    async deleteCarrito(idUsuario) {
+        const carritosObj = await this.carritosDao.deleteById(idUsuario);
         return carritosObj;
     }       
     

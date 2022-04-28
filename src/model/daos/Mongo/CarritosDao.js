@@ -7,27 +7,27 @@ export default class CarritosDao extends ContainerDao {
     super('carritos')
   }
 
-  async updatePushProductoAlCarrito(idCarrito, objProductoNuevo) {
+  async updatePushProductoAlCarrito(idUsuario, objProductoNuevo) {
     try {
       await this.collection.updateOne(
-        { idCarrito: idCarrito },
+        { id: idUsuario },
         { '$push': { productos: objProductoNuevo } })
-      return await super.getById({ idCarrito: idCarrito })
+      return await super.getById(idUsuario)
     }
     catch (err) {
-      throw new CustomError(500, `Error al agregar un producto al carrito`, err)
+      throw new CustomError(500, `Error adding product to cart`, err)
     }
   }
 
-  async updatePullProductoAlCarrito(idCarrito, codigoProducto) {
+  async updatePullProductoAlCarrito(idUsuario, codigoProducto) {
     try {
       await this.collection.updateOne(
-        { idCarrito: idCarrito },
+        { id: idUsuario },
         { '$pull': { productos: { "codigoProducto" : { $eq: codigoProducto } } } })
-      return await super.getById({ idCarrito: idCarrito })
+      return await super.getById(idUsuario)
     }
     catch (err) {
-      throw new CustomError(500, `Error al agregar un producto al carrito`, err)
+      throw new CustomError(500, `Error when deleting a product to the cart`, err)
     }
   }
 

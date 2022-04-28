@@ -17,10 +17,11 @@ export default class ContainerDao {
 
     async getAll() {
         try {
-            const query = await this.collection.get();
-            let array = query.docs;
-            console.log("getAll")
-            console.log(array)
+            const array = []
+            const snapshot = await this.coleccion.get();
+            snapshot.forEach(doc => {
+                array.push({ id: doc.id, ...doc.data() })
+            })
             return array
         }
         catch (err) {
@@ -28,78 +29,49 @@ export default class ContainerDao {
         }
     }
 
-    async getById(query) {
-        let wanted
+    async getById(id) {
+
         try {
-            wanted = await this.collection.findOne(query);
+            const doc = await this.coleccion.doc(id).get();
+            if (!doc.exists) {
+                throw new Error(`Error al listar por id: no se encontró`)
+            } else {
+                const data = doc.data();
+                return { ...data, id }
+            }
         }
         catch (err) {
-            throw new CustomError(500, `Error when obtaining a Document by code in the collection ${this.collectionName}`, err)
+            throw new CustomError(500, `Error when obtaining a Document by id in the collection ${this.collectionName}`, err)
         }
 
-        if (!wanted) {
-            throw new CustomError(404, `Document not found with that ${JSON.stringify(query)}`)
-        }
-        return wanted
-    }
-
-    async getByObjectId(idCarrito) {
-        let wanted
-        try {
-            wanted = await this.collection.find({ "_id": ObjectId(idCarrito) } );
-            console.log(wanted)
-        }
-        catch (err) {
-            throw new CustomError(500, `Error when obtaining a Document by code in the collection ${this.collectionName}`, err)
-        }
-
-        if (!wanted) {
-            throw new CustomError(404, `Document not found with that ${JSON.stringify(query)}`)
-        }
-        return wanted
     }
 
     async add(data) {
         try {
-            const { insertedId } = await this.collection.insertOne(data)
-            return insertedId;
+            const guardado = await this.coleccion.add(data);
+            return { ...nuevoElem, id: guardado.id }
         }
         catch (err) {
-            throw new CustomError(500, `Error adding mongo document to collection ${this.collectionName}`, err)
+            throw new CustomError(500, `Error adding document to collection ${this.collectionName}`, err)
         }
     }
 
     async update(query) {
         try {
-            const { insertedId } = await this.collection.updateOne(query)
-            return insertedId;
+            const actualizado = await this.coleccion.doc(query.id).set(query);
+            return actualizado
         }
         catch (err) {
-            throw new CustomError(500, `Error update mongo document to collection ${this.collectionName}`, err)
+            throw new CustomError(500, `Error update document to collection ${this.collectionName}`, err)
         }
     }
-   
-   
-    async deleteById(query) {
-        await this.collection.deleteOne(query, function (err, obj) {
-            if (err) {
-                throw new CustomError(500, `Error getting all documents in collection ${this.collectionName}`, err)
-            }
-        });
-    }
-
-    async deleteByObjectId(idCarrito) {
-        let wanted
+      
+    async deleteById(id) {
         try {
-            wanted = await this.collection.deleteOne({ "_id": ObjectId(idCarrito) });
+            const item = await this.coleccion.doc(id).delete();
+            return item
+        } catch (error) {
+            throw new CustomError(500, `Error when delete a document by id to collection ${this.collectionName}`, err)
         }
-        catch (err) {
-            throw new CustomError(500, `Error when obtaining a Document by code in the collection ${this.collectionName}`, err)
-        }
-        if (!wanted) {
-            throw new CustomError(404, `Document not found with that ${JSON.stringify(_id)}`)
-        }
-        return wanted
     }
-
 }
